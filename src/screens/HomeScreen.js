@@ -1,7 +1,5 @@
-import { ImageBackground, StyleSheet, Text, View, StatusBar } from 'react-native';
-import { TouchableOpacity,Image} from 'react-native';
+import { Image, ImageBackground, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import images from '../resources/imagesLocation';
-import AppContainer from '../navigation/AppContainer';
 
 
 const HomeScreen = ({ navigation }) => {
@@ -20,53 +18,50 @@ const HomeScreen = ({ navigation }) => {
                 style={HomeStyle.ImageBackground} >
 
                 <StatusBar hidden={true} />
-                <View style = {HomeStyle.welcome}> 
+                <View style={HomeStyle.welcome}>
 
-                <Image 
-                source={images.app_icon} />
+                    <Image
+                        source={images.app_icon} />
 
-                <Text style={HomeStyle.textStyle}>
-                    Welcome{'\n'}
-                    <Text style={{
-                        alignItems: 'center',
-                        justifyContent: 'space-between'
-                    }}>to our store</Text>
-                </Text>
-
-                <Text style={{
-                    color: '#FCFCFCB2',
-                    fontSize : 14,
-                    letterSpacing : 1.2
-                    }}>
-                    Get your groceries in as fast as one hour
-                </Text>
-            <TouchableOpacity
-                onPress={ () => {
-                    navigation.navigate('SignInScreen')
-                }}
-            >
-                <View 
-                style = {{
-                    width : 350,
-                    padding : 16,
-                    backgroundColor : '#53B175',
-                    borderRadius : 10,
-                    marginTop : 20,
-                    alignItems : 'center'
-
-                }}>
-                    <Text
-                    style = {{
-                        color : 'white',
-                        fontSize : 20,
-                        fontFamily : 'Gilroy-Bold'
-                    }}> 
-                    Get Started
+                    <Text style={HomeStyle.textStyle}>
+                        Welcome
                     </Text>
+                    <Text style={HomeStyle.textStyle}>to our store</Text>
 
-                </View>
+                    <Text style={{
+                        color: '#FCFCFCB2',
+                        fontSize: 14,
+                        letterSpacing: 1.2
+                    }}>
+                        Get your groceries in as fast as one hour
+                    </Text>
+                    <TouchableOpacity
+                        onPress={() => {
+                            navigation.navigate('SignInScreen')
+                        }}
+                    >
+                        <View
+                            style={{
+                                width: 350,
+                                padding: 16,
+                                backgroundColor: '#53B175',
+                                borderRadius: 10,
+                                marginTop: 20,
+                                alignItems: 'center'
 
-            </TouchableOpacity>
+                            }}>
+                            <Text
+                                style={{
+                                    color: 'white',
+                                    fontSize: 20,
+                                    fontFamily: 'Gilroy-Bold'
+                                }}>
+                                Get Started
+                            </Text>
+
+                        </View>
+
+                    </TouchableOpacity>
 
                 </View>
             </ImageBackground>
@@ -89,12 +84,13 @@ const HomeStyle = StyleSheet.create({
         letterSpacing: 1.2,
         fontFamily: 'Gilroy-Bold',
         padding: 5,
+        alignSelf: 'center',
     },
-    welcome : {
-        flex : 1,
-        alignItems : 'center',
-        justifyContent : 'flex-end',
-        marginBottom : 66
+    welcome: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        marginBottom: 66
     }
 });
 

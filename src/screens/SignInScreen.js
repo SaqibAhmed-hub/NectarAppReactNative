@@ -1,7 +1,12 @@
 import { useState } from 'react';
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import {
+    Image,
+    StyleSheet,
+    Text,
+    TextInput, View
+} from 'react-native';
+import SignInButton from '../components/SignInButton';
 import images from '../resources/imagesLocation';
-import Icon from 'react-native-vector-icons/FontAwesome'
 
 
 const SignInScreen = ({ navigation }) => {
@@ -46,76 +51,21 @@ const SignInScreen = ({ navigation }) => {
                 Or connect with social media
             </Text>
 
-            <TouchableOpacity
-                onPress={() => {
-                    //Need Google Sign In
+            <SignInButton
+                onPressHandler={() => { 
+                    navigation.navigate('LogInScreen')
                 }}
-            >
-                <View
-                    style={{
-                        width: 350,
-                        flexDirection: 'row',
-                        padding: 16,
-                        backgroundColor: '#5383EC',
-                        borderRadius: 10,
-                        marginTop: 20,
-                        alignItems: 'center',
-                        alignSelf: 'center'
+                title={"Continue with Google"}
+                iconName={'google'}
+                color={'#5383EC'}
+            />
 
-                    }}>
-
-            <Icon name="google" size={24} color="#fff" />
-                    <Text
-                        style={{
-                            color: 'white',
-                            fontSize: 16,
-                            marginLeft :20,
-                            fontFamily: 'Gilroy-Bold'
-                        }}>
-                        Continue with Google
-                    </Text>
-
-                </View>
-
-            </TouchableOpacity>
-            <TouchableOpacity
-                onPress={() => {
-                    //Need FaceBook Sign In
-                }}
-            >
-                <View
-                    style={{
-                        width: 350,
-                        padding: 16,
-                        flexDirection: 'row',
-                        backgroundColor: '#4A66AC',
-                        borderRadius: 10,
-                        marginTop: 20,
-                        alignItems: 'center',
-                        alignSelf: 'center'
-
-                    }}>
-            
-
-                        <Icon name="facebook" size={24} color="#fff" />
-
-                        <Text
-                            style={{
-                                color: 'white',
-                                fontSize: 16,
-                                marginLeft :20,
-                                fontFamily: 'Gilroy-Bold'
-                            }}>
-                            Continue with Facebook
-                        </Text>
-
-
-
-
-                
-
-                </View>
-            </TouchableOpacity>
+            <SignInButton
+                onPressHandler={() => { }}
+                title={"Continue with Facebook"}
+                iconName={'facebook'}
+                color={'#4A66AC'}
+            />
         </View>
     )
 
