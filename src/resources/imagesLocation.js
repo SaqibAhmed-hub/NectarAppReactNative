@@ -5,6 +5,8 @@ const images = {
     fruit_img: require('./images/food_images.png'),
     color_icon: require('./images/color_icon.png'),
     login_bg: require('./images/login_background.png'),
+    eye_close: require('./images/eye_img.png'),
+    eye_open : require('./images/eyeopen.png')
 };
 
 
