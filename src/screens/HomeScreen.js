@@ -37,7 +37,7 @@ const HomeScreen = ({ navigation }) => {
                     </Text>
                     <TouchableOpacity
                         onPress={() => {
-                            navigation.navigate('SignInScreen')
+                            navigation.navigate('SocialSignInScreen')
                         }}
                     >
                         <View

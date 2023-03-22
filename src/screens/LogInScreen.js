@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import {
+    Alert,
     Image, ImageBackground, KeyboardAvoidingView,
     Pressable, StyleSheet,
     Text, TextInput, TouchableOpacity, View
 } from 'react-native';
 import AppButton from '../components/Button';
 import images from '../resources/imagesLocation';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LogInScreen = ({ navigation }) => {
 
@@ -15,6 +17,28 @@ const LogInScreen = ({ navigation }) => {
 
     const handleIconChange = () => {
         setSecureText(!secureText)
+    }
+
+    function screenCheck() {
+        if(email === '' || password === ''){
+            Alert.alert('Alert','Please provide the email and password')
+        }else if(password.length < 8 ){
+            Alert.alert('Alert','Password should be minimum 8 char')
+        }else{
+            //Save the value in Async Storage and Navigate to Dashboard Screen
+            setLoginData()
+        }
+    }
+
+    async function setLoginData() {
+        try{
+            AsyncStorage.setItem('loginemail', email)
+            AsyncStorage.setItem('loginpass', password)
+        }catch(err){
+            console.log(err);
+        }
+        //Send to Dashboard Screen
+        navigation.navigate('DashBoardScreen');
     }
 
     return (
@@ -69,19 +93,28 @@ const LogInScreen = ({ navigation }) => {
                         }}>
                         Password
                     </Text>
-                    <TextInput
-                        placeholder='Enter your Password'
-                        style={LogInStyle.input}
-                        onChangeText={setPassword}
-                        value={password}
-                        secureTextEntry={secureText}
-                        returnKeyType='go'
-                        maxLength={30}
-                    >       
-                    </TextInput>
+                    <View
+                        style={{
+                            flexDirection: 'row'
+                        }}>
+                        <TextInput
+                            placeholder='Enter your Password'
+                            style={LogInStyle.password}
+                            onChangeText={setPassword}
+                            value={password}
+                            secureTextEntry={secureText}
+                            returnKeyType='go'
+                            maxLength={30}
+                        >
+                        </TextInput>
 
-                    <Pressable
-                        onPress={() => handleIconChange()}>
+                        <Pressable
+                            onPress={() => handleIconChange()}
+                            style={{
+                                borderBottomWidth: 1,
+                                borderColor: '#E2E2E2',
+                                flex: 0.1
+                            }}>
                             <Image
                                 style={{
                                     height: 24,
@@ -92,25 +125,37 @@ const LogInScreen = ({ navigation }) => {
                             />
                         </Pressable>
 
+                    </View>
+
                     <Text style={{
                         marginTop: 20,
                         alignSelf: 'flex-end'
                     }}>Forgot Password?</Text>
 
                     <AppButton
-                        onPressHandler = {()=> {
+                        onPressHandler={() => {
                             // handle the screen button
+                            screenCheck()
                         }}
-                        title = 'Log In'
+                        title='Log In'
                     />
 
                     <Text style={{
                         marginTop: 20,
                         alignSelf: 'center'
-                    }}>Don’t have an account? <Text style={{
-                        color: '#53B175',
-                        fontWeight: '300'
-                    }}> Sign up</Text></Text>
+                    }}>Don’t have an account?
+                        <Pressable
+                            onPress={() => {
+                                //Call to Sign up Page
+                                navigation.navigate('SignInScreen')
+                            }}>
+                            <Text style={{
+                                color: '#53B175',
+                                fontWeight: '700'
+                            }}> Sign up</Text>
+
+                        </Pressable>
+                    </Text>
                 </View>
             </View>
         </KeyboardAvoidingView>
@@ -147,6 +192,13 @@ const LogInStyle = StyleSheet.create({
         borderColor: '#E2E2E2',
         fontSize: 16,
         fontFamily: 'Gilroy-Medium',
+    },
+    password: {
+        borderBottomWidth: 1,
+        borderColor: '#E2E2E2',
+        fontSize: 16,
+        fontFamily: 'Gilroy-Medium',
+        flex: 0.9
     }
 });
 
