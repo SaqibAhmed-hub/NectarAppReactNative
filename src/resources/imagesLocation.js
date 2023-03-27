@@ -15,6 +15,19 @@ const images = {
     chillies : require('./images/chillies.png'),
     ginger : require('./images/ginger.png'),
     grocries: require('./images/grocries.png'),
-    rice : require('./images/rice.png')
+    rice : require('./images/rice.png'),
+    fruit_vegetable : require('./images/fruit_vegetable.png'),
+    cooking_oil : require('./images/cooling_oil.png'),
+    meat_fish : require('./images/meat_fish.png'),
+    bakery : require('./images/bakery.png'),
+    dairy : require('./images/dairy.png'),
+    beverages : require('./images/bevergaes.png'),
+    diet_coke : require('./images/diet_coke.png'),
+    sprite_can : require('./images/spirit_can.png'),
+    apple_juice : require('./images/apple_juice.png'),
+    orange_juice : require('./images/orange_juice.png'),
+    cocacola : require('./images/cocacola.png'),
+    pepsi : require('./images/pepsi.png'),
+
 };
 export default images;
