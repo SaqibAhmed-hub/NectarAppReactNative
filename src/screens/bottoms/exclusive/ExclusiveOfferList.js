@@ -5,27 +5,31 @@ import color from "../../../utils/color";
 
 const ExclusiveOfferList = (props) => {
     return (
+
         <View style={ExclusiveStyle.container}>
-            <Image
-                source={props.img}
-                style={ExclusiveStyle.img}
-            />
-            <Text style={ExclusiveStyle.header}>{props.title}</Text>
-            <Text style={ExclusiveStyle.qty}> {props.qty} pcs, Priceg </Text>
-            <View style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                marginTop : 20
-            }}>
-                <Text style={ExclusiveStyle.price}>
-                    {props.price}
-                </Text>
-                <Pressable >
-                    <View style={ExclusiveStyle.button}>
-                        <Icons name='plus' color='#fff' size={24} />
-                    </View>
-                </Pressable>
-            </View>
+            <Pressable 
+                onPress={props.onPressHandler}>
+                <Image
+                    source={props.img}
+                    style={ExclusiveStyle.img}
+                />
+                <Text style={ExclusiveStyle.header}>{props.title}</Text>
+                <Text style={ExclusiveStyle.qty}> {props.qty} pcs, Priceg </Text>
+                <View style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    marginTop: 20
+                }}>
+                    <Text style={ExclusiveStyle.price}>
+                        {props.price}
+                    </Text>
+                    <Pressable >
+                        <View style={ExclusiveStyle.button}>
+                            <Icons name='plus' color='#fff' size={24} />
+                        </View>
+                    </Pressable>
+                </View>
+            </Pressable>
         </View>
     )
 }
@@ -42,8 +46,8 @@ const ExclusiveStyle = StyleSheet.create({
     },
     img: {
         padding: 4,
-        resizeMode : 'cover',
-        height : 80,
+        resizeMode: 'cover',
+        height: 80,
     },
     header: {
         marginTop: 10,

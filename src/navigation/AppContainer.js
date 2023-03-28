@@ -6,6 +6,7 @@ import SignInScreen from '../screens/SignInScreen';
 import SocialSignInScreen from '../screens/SocialSignInScreen';
 import SplashScreen from '../screens/SplashScreen';
 import DashBoardScreen from '../screens/DashboardScreen';
+import ProductDetailsScreen from '../screens/bottoms/shops/productdetails';
 
 
 const AppContainer = () => {
@@ -13,6 +14,7 @@ const AppContainer = () => {
     const Stack = createNativeStackNavigator();
 
     return (
+        
         <NavigationContainer>
             <Stack.Navigator
                 initialRouteName='SplashScreen'
@@ -47,7 +49,11 @@ const AppContainer = () => {
                     component={DashBoardScreen}
                     options={{ headerShown: false }}
                 />
-
+                <Stack.Screen 
+                    name = 'ProductDetailsScreen'
+                    component={ProductDetailsScreen}
+                    options = {{headerShown : false}}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     )

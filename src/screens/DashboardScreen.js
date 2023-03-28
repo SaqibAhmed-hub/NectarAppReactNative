@@ -8,7 +8,7 @@ import AccountScreen from './bottoms/accountScreen';
 import CartScreen from './bottoms/cartScreen';
 import ExploreScreen from './bottoms/exploreScreen';
 import FavouriteScreen from './bottoms/favouriteScreen';
-import ShopScreen from './bottoms/shopScreen';
+import ShopScreen from './bottoms/shops/shopScreen';
 import color from '../utils/color';
 
 
@@ -42,7 +42,6 @@ const DashBoardScreen = ({ navigation }) => {
                     },
                     headerShown: false,
                     tabBarLabel: 'Shop',
-
 
                 }}
             />

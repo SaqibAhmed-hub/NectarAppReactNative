@@ -1,10 +1,15 @@
 import React from 'react';
-import AppContainer from './src/navigation/AppContainer'
+import { Provider } from 'react-redux';
+import AppContainer from './src/navigation/AppContainer';
+import { store } from './src/redux/stores/store';
 
 function App(): JSX.Element {
 
   return (
-    <AppContainer />
+    <Provider
+      store={store}>
+      <AppContainer />
+    </Provider>
   );
 }
 
