@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
-import Icons from 'react-native-vector-icons/FontAwesome';
+import Icons from 'react-native-vector-icons/Feather';
 import AppButton from '../../components/Button';
 import { FavoriteModel } from '../../model/FavoriteModel';
 

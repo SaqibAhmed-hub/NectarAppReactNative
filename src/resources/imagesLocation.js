@@ -28,6 +28,16 @@ const images = {
     orange_juice : require('./images/orange_juice.png'),
     cocacola : require('./images/cocacola.png'),
     pepsi : require('./images/pepsi.png'),
-
+    user_profile : require('./images/user_profile.png'),
+    profile_edit_icon : require('./images/profile_edit.png'),
+    orders_icon : require('./images/user_order_icon.png'),
+    details_icon : require('./images/details_icon.png'),
+    delivary_icon : require('./images/delivary_icon.png'),
+    payment_icon : require('./images/payment_icon.png'),
+    promo_icon : require('./images/promo_icon.png'),
+    notification_icon : require('./images/notification_icon.png'),
+    help_icon : require('./images/help_icon.png'),
+    about_icon : require('./images/about_icon.png'),
+    logout_icon : require('./images/logout_icon.png'),
 };
 export default images;

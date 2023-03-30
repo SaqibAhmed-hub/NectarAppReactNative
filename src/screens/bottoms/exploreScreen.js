@@ -9,18 +9,18 @@ const ExploreScreen = () => {
         const randomColor = Math.floor(Math.random() * 16777215)
             .toString(16)
             .padStart(6, '0');
-            console.log( '66' +randomColor);
-        return `#${ '66' + randomColor}`;
+            console.log( '99' +randomColor);
+        return `#${ '99' + randomColor}`;
     };
 
     // 16777215 is equal to 0xFFFFFF value
-    const generateColor = () => {
-        const randomColor = Math.floor(Math.random() * 16777215)
-            .toString(16)
-            .padStart(6, '0');
-            console.log(randomColor);
-        return `#${randomColor}`;
-    };
+    // const generateColor = () => {
+    //     const randomColor = Math.floor(Math.random() * 16777215)
+    //         .toString(16)
+    //         .padStart(6, '0');
+    //         console.log(randomColor);
+    //     return `#${randomColor}`;
+    // };
 
     return (
         <View style={ExploreStyle.container}>
@@ -39,7 +39,7 @@ const ExploreScreen = () => {
                     <View
                         style={[ExploreStyle.card, {
                             backgroundColor: generateAlphaColor(),
-                            borderColor: generateColor(),
+                            borderColor: '#000',
                         }]}>
                         <Image
                             source={item.img}
