@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View ,TouchableOpacity,Text} from 'react-native';
+import { StyleSheet, View ,TouchableOpacity,Text ,UIManager, LayoutAnimation} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 
@@ -7,10 +7,16 @@ const Accordins = ({ children, title }) => {
 
 
     const [expanded, setExpanded] = useState(false);
+    
+    if(Platform.OS === 'android') {
+        UIManager.setLayoutAnimationEnabledExperimental(true);
+      }
 
     function toggleItem() {
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
         setExpanded(!expanded);
     }
+
 
     const body = <View style={AccordinsStyle.accordBody}>{children}</View>;
 

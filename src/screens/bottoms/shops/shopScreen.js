@@ -2,7 +2,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useEffect, useState } from 'react';
 import { FlatList, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Icons from 'react-native-vector-icons/Ionicons';
-import { useDispatch, useSelector } from 'react-redux';
 import SearchBar from '../../../components/SearchBar';
 import { fruitModel } from '../../../model/fruitsModel';
 import { vegetable } from '../../../model/vegetableModel';
@@ -10,7 +9,7 @@ import images from '../../../resources/imagesLocation';
 import color from '../../../utils/color';
 import ExclusiveOfferList from '../exclusive/ExclusiveOfferList';
 
-const ShopScreen = ({navigation}) => {
+const ShopScreen = ({ navigation }) => {
 
 
     const [username, setUsername] = useState('')
@@ -75,7 +74,6 @@ const ShopScreen = ({navigation}) => {
             <ScrollView
                 nestedScrollEnabled={true}
                 scrollEnabled
-
             >
                 {/* Exclusive Offer */}
                 <View style={shopScreenStyle.listTitle} >
@@ -90,7 +88,7 @@ const ShopScreen = ({navigation}) => {
                         showsHorizontalScrollIndicator={false}
                         renderItem={listItem => (
                             <ExclusiveOfferList
-                                onPressHandler = {() => {onSubmit(listItem)}}
+                                onPressHandler={() => { onSubmit(listItem) }}
                                 title={listItem.item.itemName}
                                 qty={listItem.item.qty}
                                 img={listItem.item.img}
@@ -109,10 +107,10 @@ const ShopScreen = ({navigation}) => {
                         bounces
                         horizontal={true}
                         data={vegetable}
-                        showsHorizontalScrollIndicator={false}  
+                        showsHorizontalScrollIndicator={false}
                         renderItem={listItem => (
                             <ExclusiveOfferList
-                                onPressHandler = {() => {onSubmit(listItem)}}
+                                onPressHandler={() => { onSubmit(listItem) }}
                                 title={listItem.item.itemName}
                                 qty={listItem.item.qty}
                                 img={listItem.item.img}
@@ -134,7 +132,7 @@ const ShopScreen = ({navigation}) => {
                         showsHorizontalScrollIndicator={false}
                         renderItem={listItem => (
                             <ExclusiveOfferList
-                                onPressHandler={() => {onSubmit(listItem)}}
+                                onPressHandler={() => { onSubmit(listItem) }}
                                 title={listItem.item.itemName}
                                 qty={listItem.item.qty}
                                 img={listItem.item.img}
@@ -148,8 +146,8 @@ const ShopScreen = ({navigation}) => {
     )
 
 
-   
-   
+
+
 
 }
 
