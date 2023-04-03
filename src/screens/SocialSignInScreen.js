@@ -61,7 +61,9 @@ const SignInScreen = ({ navigation }) => {
             />
 
             <SignInButton
-                onPressHandler={() => { }}
+                onPressHandler={() => {
+                    navigation.navigate('Screen')
+                }}
                 title={"Continue with Facebook"}
                 iconName={'facebook'}
                 color={'#4A66AC'}

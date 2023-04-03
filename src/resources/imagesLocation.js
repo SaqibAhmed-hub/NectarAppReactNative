@@ -1,5 +1,5 @@
 
-const images = {
+ const images = {
     bg_image: require('./images/background_image.png'),
     app_icon: require('./images/nectar_icon.png'),
     fruit_img: require('./images/food_images.png'),
@@ -39,5 +39,10 @@ const images = {
     help_icon : require('./images/help_icon.png'),
     about_icon : require('./images/about_icon.png'),
     logout_icon : require('./images/logout_icon.png'),
+    payment_type : require('./images/payment_type.png'),
+    order_accept : require('./images/accepted.png'),
+    order_decline : require('./images/order_declined.png'),
+
 };
+
 export default images;

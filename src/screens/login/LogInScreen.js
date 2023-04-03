@@ -1,13 +1,13 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useState } from 'react';
 import {
     Alert,
     Image, ImageBackground, KeyboardAvoidingView,
     Pressable, StyleSheet,
-    Text, TextInput, TouchableOpacity, View
+    Text, TextInput, View
 } from 'react-native';
-import AppButton from '../components/Button';
-import images from '../resources/imagesLocation';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AppButton from '../../components/Button';
+import images from '../../resources/imagesLocation';
 
 const LogInScreen = ({ navigation }) => {
 

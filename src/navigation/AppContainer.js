@@ -1,12 +1,13 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import DashBoardScreen from '../screens/DashboardScreen';
 import HomeScreen from '../screens/HomeScreen';
-import LogInScreen from '../screens/LogInScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SocialSignInScreen from '../screens/SocialSignInScreen';
 import SplashScreen from '../screens/SplashScreen';
-import DashBoardScreen from '../screens/DashboardScreen';
+import OrderAccepted from '../screens/bottoms/orders/OrderAccepted';
 import ProductDetailsScreen from '../screens/bottoms/shops/productdetails';
+import LogInScreen from '../screens/login/LogInScreen';
 
 
 const AppContainer = () => {
@@ -14,11 +15,9 @@ const AppContainer = () => {
     const Stack = createNativeStackNavigator();
 
     return (
-        
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName='SplashScreen'
-            >
+                initialRouteName='SplashScreen'>
                 <Stack.Screen
                     name='SplashScreen'
                     component={SplashScreen}
@@ -49,10 +48,15 @@ const AppContainer = () => {
                     component={DashBoardScreen}
                     options={{ headerShown: false }}
                 />
-                <Stack.Screen 
-                    name = 'ProductDetailsScreen'
+                <Stack.Screen
+                    name='ProductDetailsScreen'
                     component={ProductDetailsScreen}
-                    options = {{headerShown : false}}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name='OrderAccepted'
+                    component={OrderAccepted}
+                    options={{ headerShown: false }}
                 />
             </Stack.Navigator>
         </NavigationContainer>
