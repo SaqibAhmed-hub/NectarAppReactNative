@@ -42,7 +42,7 @@
     payment_type : require('./images/payment_type.png'),
     order_accept : require('./images/accepted.png'),
     order_decline : require('./images/order_declined.png'),
-
+    filter_icon : require('./images/filter_icon.png'),
 };
 
 export default images;

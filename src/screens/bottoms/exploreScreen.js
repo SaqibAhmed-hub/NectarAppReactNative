@@ -1,16 +1,16 @@
 import React from 'react';
-import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import SearchBar from '../../components/SearchBar';
 import { exploreModel } from '../../model/exploreModel';
 
-const ExploreScreen = () => {
+const ExploreScreen = ({navigation}) => {
 
     const generateAlphaColor = () => {
         const randomColor = Math.floor(Math.random() * 16777215)
             .toString(16)
             .padStart(6, '0');
-            console.log( '99' +randomColor);
-        return `#${ '99' + randomColor}`;
+        console.log('99' + randomColor);
+        return `#${'99' + randomColor}`;
     };
 
     // 16777215 is equal to 0xFFFFFF value
@@ -21,6 +21,13 @@ const ExploreScreen = () => {
     //         console.log(randomColor);
     //     return `#${randomColor}`;
     // };
+
+    const onClicked = (items) => {
+        console.log(items);
+        navigation.navigate('ProductListScreen', {
+            title: items.title
+        });
+    }
 
     return (
         <View style={ExploreStyle.container}>
@@ -39,23 +46,27 @@ const ExploreScreen = () => {
                     <View
                         style={[ExploreStyle.card, {
                             backgroundColor: generateAlphaColor(),
-                            borderColor: '#000',
+                            borderColor: '#888',
                         }]}>
-                        <Image
-                            source={item.img}
-                            style={{
-                                resizeMode: 'contain',
-                                padding: 20
-                            }}
-                        />
-                        <Text style={{
-                            fontFamily: 'Gilroy-Bold',
-                            fontSize: 16,
-                            color: 'black',
-                            alignItems: 'center',
-                            textAlign: 'center',
-                            marginTop : 30
-                        }}>{item.title}</Text>
+                        <Pressable
+                            onPress={() => {onClicked(item)}}
+                        >
+                            <Image
+                                source={item.img}
+                                style={{
+                                    resizeMode: 'contain',
+                                    padding: 20
+                                }}
+                            />
+                            <Text style={{
+                                fontFamily: 'Gilroy-Bold',
+                                fontSize: 16,
+                                color: 'black',
+                                alignItems: 'center',
+                                textAlign: 'center',
+                                marginTop: 30
+                            }}>{item.title}</Text>
+                        </Pressable>
                     </View>
                 )
                 }

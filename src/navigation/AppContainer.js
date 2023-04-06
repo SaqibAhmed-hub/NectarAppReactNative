@@ -8,7 +8,7 @@ import SplashScreen from '../screens/SplashScreen';
 import OrderAccepted from '../screens/bottoms/orders/OrderAccepted';
 import ProductDetailsScreen from '../screens/bottoms/shops/productdetails';
 import LogInScreen from '../screens/login/LogInScreen';
-
+import ProductListScreen from '../screens/bottoms/explore/productList';
 
 const AppContainer = () => {
 
@@ -58,10 +58,14 @@ const AppContainer = () => {
                     component={OrderAccepted}
                     options={{ headerShown: false }}
                 />
+                <Stack.Screen
+                    name='ProductListScreen'
+                    component={ProductListScreen}
+                    options={{ headerShown: false }}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     )
-
 }
 
 export default AppContainer;

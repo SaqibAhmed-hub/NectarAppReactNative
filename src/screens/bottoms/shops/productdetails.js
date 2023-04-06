@@ -17,7 +17,12 @@ const ProductDetailsScreen = ({ navigation, route }) => {
         <View style={productDetailStyle.container}>
             <View style={productDetailStyle.background}>
                 <View style={productDetailStyle.icons}>
+                    <Pressable
+                    onPress = {()=> {
+                        navigation.goBack(null)
+                    }}>
                     <Icons name="ios-chevron-back-outline" size={24} color='#181725' />
+                    </Pressable>
                     <Icons name="share-outline" size={24} color='#181725' />
                 </View>
                 <Image
