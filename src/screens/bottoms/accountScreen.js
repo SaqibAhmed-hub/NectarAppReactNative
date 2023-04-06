@@ -6,7 +6,11 @@ import images from '../../resources/imagesLocation';
 import color from '../../utils/color';
 
 
-const AccountScreen = () => {
+const AccountScreen = ({navigation}) => {
+
+    const goToLoginScreen = () => {
+        navigation.navigate('LogInScreen');
+    }
 
     return (
         <View style={AccountStyle.container}>
@@ -61,7 +65,9 @@ const AccountScreen = () => {
             />
 
             <TouchableOpacity
-                onPress={() => { }}  >
+                onPress={() => {
+                    goToLoginScreen()
+                 }}  >
                 <View style={AccountStyle.btn_container}>
                     <Image source={images.logout_icon}
                         style={{

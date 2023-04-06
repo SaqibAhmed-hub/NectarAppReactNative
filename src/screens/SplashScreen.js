@@ -31,13 +31,9 @@ const SplashScreen = ({ navigation }) => {
                     style = {Styles.textStyle}>online groceriet</Text>
                 </Text>
             </View>
-
         </View>
     )
-
 }
-
-
 
 const Styles = StyleSheet.create({
     container: {

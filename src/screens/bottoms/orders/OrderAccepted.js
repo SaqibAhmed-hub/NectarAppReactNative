@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
-import View, { Image, Pressable, StyleSheet, Text } from 'react-native';
+import React from 'react';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import AppButton from "../../../components/Button";
 import images from "../../../resources/imagesLocation";
 
-const OrderAccepted = ({navigation}) => {
-    
+const OrderAccepted = ({ navigation }) => {
+
+    const goBackToHome = () => {
+        navigation.navigate('shopScreen');
+    }
+    const goBackRoute = () => {
+        navigation.popToTop();
+    }
+
     return (
         <View
             style={OrderStyle.container} >
@@ -12,22 +19,30 @@ const OrderAccepted = ({navigation}) => {
                 source={images.order_accept}
                 style={OrderStyle.img}
             />
-            <Text style={OrderStyle.title}>Your Order has been accepted</Text>
+            <Text style={OrderStyle.title}>Your Order has been {'\n'} accepted</Text>
             <Text
                 style={OrderStyle.subtitle}
             >Your items has been placcd and is on
                 it’s way to being processed</Text>
 
+            <View
+                style={{
+                    height: 100
+                }}
+            ></View>
+
             <AppButton
-                onPress={() => { }}
+                onPress={() => { 
+                    goBackRoute()
+                }}
                 title="Track Order"
             />
             <Pressable
-                onPress={() => { }}  >
+                onPress={() => { 
+                    goBackToHome()
+                }}  >
                 <Text style={OrderStyle.text_style}>Back to home</Text>
             </Pressable>
-
-
         </View>
     )
 }
@@ -39,20 +54,26 @@ const OrderStyle = StyleSheet.create({
         alignItems: 'center'
     },
     img: {
-        resizeMode: 'cover',
+        resizeMode: 'contain',
         padding: 18,
+        marginTop: 100,
 
     },
     title: {
         fontFamily: 'Gilroy-Medium',
         fontSize: 22,
         textAlign: 'center',
-        color: '#181725'
+        color: '#181725',
+        padding: 8,
+        marginTop: 20
     },
     subtitle: {
-        fontFamily: 'Gilroy-Black',
+        fontFamily: 'Gilroy-Medium',
         fontSize: 14,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontWeight: '500',
+        marginTop: 20,
+        marginHorizontal: 32
     },
     text_style: {
         padding: 16,

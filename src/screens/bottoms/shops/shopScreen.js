@@ -13,12 +13,11 @@ const ShopScreen = ({ navigation }) => {
 
 
     const [username, setUsername] = useState('')
-    const [search, setSearch] = useState('')
 
 
-    useEffect(() => {
-        getData()
-    }, [])
+    // useEffect(() => {
+    //     getData()
+    // }, [])
 
     const onSubmit = (listItem) => {
         console.log(listItem.item);
@@ -27,14 +26,14 @@ const ShopScreen = ({ navigation }) => {
         });
     }
 
-    function getData() {
-        AsyncStorage.getItem('loginemail')
-            .then(value => {
-                setUsername(value)
-            }).catch(err => {
-                console.log(err)
-            })
-    }
+    // function getData() {
+    //     AsyncStorage.getItem('loginemail')
+    //         .then(value => {
+    //             setUsername(value)
+    //         }).catch(err => {
+    //             console.log(err)
+    //         })
+    // }
 
     return (
         <View style={shopScreenStyle.container}>
@@ -62,7 +61,7 @@ const ShopScreen = ({ navigation }) => {
             {/* search bar  */}
             <SearchBar
                 setSearch={() => { }}
-                search={{}}
+                search={''}
                 placeholder='Search Store'
             />
             {/* Create a banner */}

@@ -3,6 +3,8 @@ import { StyleSheet, TextInput, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const SearchBar = (props) => {
+
+
     return (
         <View style={SearchBarStyle.container}>
             <Icon
@@ -38,7 +40,6 @@ const SearchBarStyle = StyleSheet.create({
     },
     iconstyle: {
         marginLeft: 16,
-
     }
 })
 

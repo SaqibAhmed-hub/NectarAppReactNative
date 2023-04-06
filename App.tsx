@@ -8,7 +8,7 @@ function App(): JSX.Element {
 
   return (
     <Provider
-      store={store}>
+      store={store} children={undefined}>
       <GestureHandlerRootView style={{
         flex: 1,
         flexGrow: 1,

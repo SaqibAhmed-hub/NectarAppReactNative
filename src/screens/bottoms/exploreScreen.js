@@ -28,7 +28,7 @@ const ExploreScreen = () => {
             {/* search bar  */}
             <SearchBar
                 setSearch={() => { }}
-                search={{}}
+                search={''}
                 placeholder='Search Store'
             />
             {/* Grid List */}

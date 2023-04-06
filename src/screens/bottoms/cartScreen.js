@@ -31,6 +31,10 @@ const CartScreen = ({navigation}) => {
         bottomSheetRef.current?.close();
     }, []);
 
+    const goToCheckOutScreen = () => {
+        navigation.navigate('OrderAccepted',{});
+    }
+
     return (
         <BottomSheetModalProvider>
                 <View style={cartStyle.container}>
@@ -164,7 +168,7 @@ const CartScreen = ({navigation}) => {
                                 Terms And Conditions</Text>
                             <AppButton
                                 onPressHandler={() => {
-                                    navigation.navigate('OrderAccepted')
+                                   goToCheckOutScreen()
                                  }}
                                 title="Place Order"
                             />

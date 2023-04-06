@@ -82,7 +82,7 @@ const ProductDetailsScreen = ({ navigation, route }) => {
                 }}>
                     Apples are nutritious.
                     Apples may be good for weight loss.
-                    apples may be good for your heart.
+                    apples may be good for your heart.'⭐'
                     As part of a healtful and varied diet.</Text>
             </Accordins>
             <View style={productDetailStyle.divider}></View>

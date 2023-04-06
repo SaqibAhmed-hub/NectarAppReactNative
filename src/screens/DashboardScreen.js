@@ -12,12 +12,12 @@ import ShopScreen from './bottoms/shops/shopScreen';
 import color from '../utils/color';
 
 
-const DashBoardScreen = ({ navigation }) => {
+const DashBoardScreen = () => {
     const Tab = createBottomTabNavigator();
     return (
         <Tab.Navigator
             initialRouteName='shopScreen'
-            screenOptions={({ route }) => ({
+            screenOptions={() => ({
                 tabBarActiveTintColor: color.base,
                 tabBarInactiveTintColor: color.inactiveColor,
                 tabBarShowLabel: true,

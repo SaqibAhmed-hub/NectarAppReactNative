@@ -19,27 +19,27 @@ const LogInScreen = ({ navigation }) => {
         setSecureText(!secureText)
     }
 
-    function screenCheck() {
-        if (email === '' || password === '') {
-            Alert.alert('Alert', 'Please provide the email and password')
-        } else if (password.length < 8) {
-            Alert.alert('Alert', 'Password should be minimum 8 char')
-        } else {
-            //Save the value in Async Storage and Navigate to Dashboard Screen
-            setLoginData()
-        }
-    }
+    // function screenCheck() {
+    //     if (email === '' || password === '') {
+    //         Alert.alert('Alert', 'Please provide the email and password')
+    //     } else if (password.length < 8) {
+    //         Alert.alert('Alert', 'Password should be minimum 8 char')
+    //     } else {
+    //         //Save the value in Async Storage and Navigate to Dashboard Screen
+    //         setLoginData()
+    //     }
+    // }
 
-    async function setLoginData() {
-        try {
-            AsyncStorage.setItem('loginemail', email)
-            AsyncStorage.setItem('loginpass', password)
-        } catch (err) {
-            console.log(err);
-        }
-        //Send to Dashboard Screen
-        navigation.navigate('DashBoardScreen');
-    }
+    // async function setLoginData() {
+    //     try {
+    //         AsyncStorage.setItem('loginemail', email)
+    //         AsyncStorage.setItem('loginpass', password)
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    //     //Send to Dashboard Screen
+    //     navigation.navigate('DashBoardScreen');
+    // }
 
     return (
         <KeyboardAvoidingView
