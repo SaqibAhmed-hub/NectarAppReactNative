@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useState } from 'react';
 import {
     Alert,
@@ -8,6 +7,7 @@ import {
 } from 'react-native';
 import AppButton from '../../components/Button';
 import images from '../../resources/imagesLocation';
+import { BASE_URL } from '../../utils/contants';
 
 const LogInScreen = ({ navigation }) => {
 
@@ -19,16 +19,41 @@ const LogInScreen = ({ navigation }) => {
         setSecureText(!secureText)
     }
 
-    // function screenCheck() {
-    //     if (email === '' || password === '') {
-    //         Alert.alert('Alert', 'Please provide the email and password')
-    //     } else if (password.length < 8) {
-    //         Alert.alert('Alert', 'Password should be minimum 8 char')
-    //     } else {
-    //         //Save the value in Async Storage and Navigate to Dashboard Screen
-    //         setLoginData()
-    //     }
-    // }
+    function screenCheck() {
+        if (email === '' || password === '') {
+            Alert.alert('Alert', 'Please provide the email and password')
+        } else if (password.length < 8) {
+            Alert.alert('Alert', 'Password should be minimum 8 char')
+        } else {
+            //Save the value in Async Storage and Navigate to Dashboard Screen
+            // setLoginData()
+            //call the login API and save the user token
+            getLogin()
+        }
+    }
+
+    async function getLogin() {
+        try {
+            let data = {
+                email: email,
+                password : password
+            }
+            console.log(data);
+            let result = await fetch(
+                BASE_URL.local_url + 'login',
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                }
+            )
+            let json = await result.json();
+            console.log(json);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     // async function setLoginData() {
     //     try {
@@ -135,9 +160,9 @@ const LogInScreen = ({ navigation }) => {
                     <AppButton
                         onPressHandler={() => {
                             // handle the screen button
-                            // screenCheck()
+                            screenCheck()
                             //Send to Dashboard Screen
-                            navigation.navigate('DashBoardScreen');
+                            // navigation.navigate('DashBoardScreen');
                         }}
                         title='Log In'
                     />
