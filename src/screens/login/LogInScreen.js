@@ -1,23 +1,46 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     Alert,
     Image, ImageBackground, KeyboardAvoidingView,
     Pressable, StyleSheet,
     Text, TextInput, View
 } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import AppButton from '../../components/Button';
+import { setLogin } from '../../redux/action/product_action';
 import images from '../../resources/imagesLocation';
-import { BASE_URL } from '../../utils/contants';
 
 const LogInScreen = ({ navigation }) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [secureText, setSecureText] = useState(true)
+    const loginReducer = useSelector(state => state.useProduct) // useProduct is the redux reducer
+    const dispatch = useDispatch();
 
     const handleIconChange = () => {
         setSecureText(!secureText)
     }
+    // This function is to validate the obj is empty or not
+    function isEmptyObject(obj) {
+        return JSON.stringify(obj) === '{}'
+    }
+
+    useEffect(() => {
+        if (isEmptyObject(loginReducer.login)) {
+            console.log('Obj is Empty')
+        } else {
+            var response = loginReducer.login
+            console.log(response, "==>");
+            if (response.statusCode === 200) {
+                setLoginData()
+            } else {
+                alert(response.message)
+            }
+        }
+    }, [loginReducer.login]) // this means the whenever the state change it will render
+
+
 
     function screenCheck() {
         if (email === '' || password === '') {
@@ -25,46 +48,24 @@ const LogInScreen = ({ navigation }) => {
         } else if (password.length < 8) {
             Alert.alert('Alert', 'Password should be minimum 8 char')
         } else {
-            //Save the value in Async Storage and Navigate to Dashboard Screen
-            // setLoginData()
             //call the login API and save the user token
-            getLogin()
-        }
-    }
-
-    async function getLogin() {
-        try {
             let data = {
                 email: email,
-                password : password
+                password: password
             }
-            console.log(data);
-            let result = await fetch(
-                BASE_URL.local_url + 'login',
-                {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data),
-                }
-            )
-            let json = await result.json();
-            console.log(json);
-
-        } catch (error) {
-            console.log(error);
+            dispatch(setLogin(data))
         }
     }
 
-    // async function setLoginData() {
-    //     try {
-    //         AsyncStorage.setItem('loginemail', email)
-    //         AsyncStorage.setItem('loginpass', password)
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    //     //Send to Dashboard Screen
-    //     navigation.navigate('DashBoardScreen');
-    // }
+    async function setLoginData() {
+        try {
+            AsyncStorage.setItem('webToken', loginReducer.login.data.token)
+        } catch (err) {
+            console.log(err);
+        }
+        //Send to Dashboard Screen
+        navigation.navigate('DashBoardScreen');
+    }
 
     return (
         <KeyboardAvoidingView
