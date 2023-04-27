@@ -1,5 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { FlatList, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import SearchBar from '../../../components/SearchBar';
@@ -12,7 +11,7 @@ import ExclusiveOfferList from '../exclusive/ExclusiveOfferList';
 const ShopScreen = ({ navigation }) => {
 
 
-    const [username, setUsername] = useState('')
+
 
 
     // useEffect(() => {
@@ -143,11 +142,6 @@ const ShopScreen = ({ navigation }) => {
             </ScrollView>
         </View>
     )
-
-
-
-
-
 }
 
 

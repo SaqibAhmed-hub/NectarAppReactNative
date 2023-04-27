@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
+    Alert,
     Image, ImageBackground, KeyboardAvoidingView, Pressable, StyleSheet,
     Text, TextInput, View
 } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import AppButton from '../components/Button';
+import { getSignUpAction,clearSignUpState } from '../redux/action/signUpAction';
 import images from '../resources/imagesLocation';
+import { isEmptyObject } from '../utils/contants';
 
 
 const SignInScreen = ({ navigation }) => {
@@ -15,8 +19,61 @@ const SignInScreen = ({ navigation }) => {
     const [password, setPassword] = useState('')
     const [secureText, setSecureText] = useState(true)
 
+    const signUpReducer = useSelector(state => state.getSignUp);
+    const dispatch = useDispatch();
+
     const handleIconChange = () => {
         setSecureText(!secureText)
+    }
+    const verifySignUp = () => {
+        if (email === '' || password === '') {
+            Alert.alert('Alert', 'Please provide the email and password')
+        } else if (password.length < 8) {
+            Alert.alert('Alert', 'Password should be minimum 8 char')
+        } else if (username === '') {
+            Alert.alert('Alert', 'please enter the username')
+        } else {
+            //call the Signup API 
+            let data = {
+                email: email,
+                password: password,
+                fullname: username
+            }
+            dispatch(getSignUpAction(data))
+        }
+    }
+
+    useEffect(() => {
+        setSignUpScreen()
+    }, [signUpReducer.signUp])
+
+    function setSignUpScreen() {
+        if (isEmptyObject(signUpReducer.signUp)) {
+            //Do Nothing
+        } else {
+            let response = signUpReducer.signUp
+            if (response.statusCode === 200) {
+                Alert.alert(
+                    'Success',
+                    'Registeration Successful',
+                    [
+                        {
+                            text: 'OK', onPress: () => {
+                                console.log('OK Pressed')
+                                dispatch(clearSignUpState())
+                                navigation.navigate('LogInScreen');
+                            },
+                            
+                        }
+                    ]
+                )
+            } else {
+                Alert.alert(
+                    'Alert',
+                    response.message
+                )
+            }
+        }
     }
 
     return (
@@ -121,13 +178,15 @@ const SignInScreen = ({ navigation }) => {
                         style={{
                             fontFamily: 'Gilroy-Medium',
                             marginTop: 20,
-                            marginHorizontal : 10 
+                            marginHorizontal: 10
                         }}>
                         By continuing you agree to our <Text style={SigninStyle.policytext}> Terms of Service </Text>
                         and <Text style={SigninStyle.policytext}>Privacy Policy</Text>.
                     </Text>
                     <AppButton
-                        onPressHandler={() => { }}
+                        onPressHandler={() => {
+                            verifySignUp()
+                        }}
                         title='Sign Up'
                     />
                 </View>

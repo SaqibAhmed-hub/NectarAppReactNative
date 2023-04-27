@@ -9,21 +9,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import AppButton from '../../components/Button';
 import { setLogin } from '../../redux/action/product_action';
 import images from '../../resources/imagesLocation';
+import { isEmptyObject } from '../../utils/contants';
 
 const LogInScreen = ({ navigation }) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [secureText, setSecureText] = useState(true)
-    const loginReducer = useSelector(state => state.useProduct) // useProduct is the redux reducer
+    const loginReducer = useSelector(state => state.userLogin) // useProduct is the redux reducer
     const dispatch = useDispatch();
 
     const handleIconChange = () => {
         setSecureText(!secureText)
-    }
-    // This function is to validate the obj is empty or not
-    function isEmptyObject(obj) {
-        return JSON.stringify(obj) === '{}'
     }
 
     useEffect(() => {
@@ -31,7 +28,7 @@ const LogInScreen = ({ navigation }) => {
             console.log('Obj is Empty')
         } else {
             var response = loginReducer.login
-            console.log(response, "==>");
+            console.log(response);
             if (response.statusCode === 200) {
                 setLoginData()
             } else {

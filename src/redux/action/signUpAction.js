@@ -1,13 +1,14 @@
-export const SET_LOGIN = "SET_LOGIN";
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const SIGNUP_REMOVE = "SIGNUP_REMOVE";
 import { BASE_URL } from "../../utils/contants";
 
 
- export const setLogin = (data) => {
+export const getSignUpAction = (data) => {
     try {
-        return async dispatch =>{
+        return async dispatch => {
             console.log(data);
             let result = await fetch(
-                BASE_URL.local_url + 'login',
+                BASE_URL.local_url + 'register',
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -18,8 +19,8 @@ import { BASE_URL } from "../../utils/contants";
             console.log(response);
             if(response){
                 dispatch({
-                    type : SET_LOGIN,
-                    payload: response
+                    type : SIGNUP_SUCCESS,
+                    payload : response
                 })
             }else{
                 console.log('unable to fetch!');
@@ -28,5 +29,11 @@ import { BASE_URL } from "../../utils/contants";
     } catch (error) {
         console.log(error);
     }
- }
+}
 
+export function clearSignUpState(){
+    return {
+        type: SIGNUP_REMOVE,
+        payload : undefined
+    }
+}
